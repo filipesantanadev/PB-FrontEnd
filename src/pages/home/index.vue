@@ -3,7 +3,7 @@
     <div class="item-container" v-for="i in 9" :key="i">
       <span>Titulo filme</span>
       <img src="../../assets/logo.png" width="100" />
-      imagem filme
+      imagem filme First Commit Teste
     </div>
   </div>
 </template>
