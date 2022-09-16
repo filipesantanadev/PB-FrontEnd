@@ -13,9 +13,8 @@
           v-for="(item, i) in imageItens"
           :key="i"
         >
-          {{ i+1 }}
+          {{ i + 1 }}
         </div>
-        {{ clientWidth }} - {{ clientHeight }}
       </div>
     </div>
     <div class="container" style="margin-top: 50px">
@@ -48,10 +47,22 @@ export default {
     },
     imageItens() {
       return [
-        { x: `${this.clientWidth * 0.4}px`, y: `${this.clientHeight * 0.15}px` },
-        { x: `${this.clientWidth * 0.63}px`, y: `${this.clientHeight * 0.15}px` },
-        { x: `${this.clientWidth * 0.9}px`, y: `${this.clientHeight * 0.5}px` },
-        { x: `${this.clientWidth * 0.1}px`, y: `${this.clientHeight * 0.5}px` },
+        {
+          x: `${this.clientWidth * 0.4}px`,
+          y: `${this.clientHeight * 0.15}px`,
+        },
+        {
+          x: `${this.clientWidth * 0.63}px`,
+          y: `${this.clientHeight * 0.15}px`,
+        },
+        {
+          x: `${this.clientWidth * 0.85}px`,
+          y: `${this.clientHeight * 0.45}px`,
+        },
+        {
+          x: `${this.clientWidth * 0.13}px`,
+          y: `${this.clientHeight * 0.4}px`,
+        },
       ];
     },
   },
@@ -73,28 +84,32 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-
 p,
 h1,
 h2,
 h3,
 span {
-  font-family: "Roboto", sans-serif;
+  font-family: "Kanit", sans-serif;
+  color: #fff;
 }
 
 .item-container {
-  padding: 2px;
+  padding: 15px;
   margin-top: 15px;
+  border-radius: 5px;
   border: 1px solid #bab8b8;
+  background-color: rgba(121, 212, 200, 0.2);
+  cursor: pointer;
 }
 
 .item-container:hover {
-  background: #bab8b8;
+  background: rgb(106, 0, 0);
+  font-weight: 900;
 }
 
 .img-container {
   background-image: url("https://cdn.rockinrio.com/wp-content/uploads/2022/mapa/cidade-do-rock2.jpg");
+  border-radius: 5px;
   width: 96%;
   max-width: 720px;
   background-repeat: no-repeat;
