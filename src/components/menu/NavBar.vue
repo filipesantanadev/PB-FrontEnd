@@ -16,6 +16,7 @@ export default {
 
   data() {
     return {
+      width: window.innerWidth,
       routes: [
         {
           name: 'home',
@@ -35,6 +36,12 @@ export default {
       ],
     };
   },
+
+  mounted() {
+    window.onresize = () => {
+      this.width = window.innerWidth
+    }
+  }
 };
 </script>
 
