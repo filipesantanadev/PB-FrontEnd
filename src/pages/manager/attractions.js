@@ -3,21 +3,27 @@ export const attractions = [
     id: 1,
     title: "Palco Mundo",
     description:
-      "Atrações: Iron Maiden, Post Malone, Justin Bieber e muito mais...",
+      "Com shows de Iron Maiden, Post Malone, Justin Bieber, Guns N' Roses, Green Day, Coldplay, Dua Lipa e muito mais...",
   },
   {
     id: 2,
     title: "Palco Sunset",
-    description: "Atrações: Avril Lavigne, Jessie J, Ludmilla.",
+    description: "Com shows de Avril Lavigne, Jessie J, Ludmilla.",
   },
   {
     id: 3,
     title: "RRGames",
-    description: "Atrações: PS5, XBOX, LOL, VALORANT.",
+    description: "PS5, XBOX, LOL, VALORANT.",
   },
   {
     id: 4,
     title: "Palco Eletrônica",
-    description: "David Guetta, Chapeleiro, Dj Rogerin.",
+    description: "Com shows de David Guetta, Chapeleiro, Dj Rogerin.",
   },
 ];
+
+// export const imageItens = [
+//   { x: "20%", y: "50%" },
+//   { x: "50%", y: "20%" },
+//   { x: "12%", y: "15%" },
+// ];
