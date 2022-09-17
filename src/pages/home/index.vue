@@ -7,7 +7,6 @@
         @click="selected = i" 
         :style="{backgroundColor : `rgba(121, 212, 200${selected === i ? '' : ', 0.5'})`}">{{day.key}}</button>
     </div>
-    {{width}}
 
     <div class="carousel">
       <n-carousel autoplay>
@@ -32,7 +31,7 @@
 </template>
 
 <script>
-import { days } from './attractions.js'
+import { days } from './days.js'
 
 export default {
   data() {
@@ -49,7 +48,6 @@ export default {
   .carousel-img {
     margin: 0 auto;
     width: 94%;
-    height: 350px;
     object-fit: cover;
   }
 
@@ -69,9 +67,9 @@ export default {
   }
 
   .carousel{
-    margin-top: 25px;
-    max-width: 720px;
-    widows: 98%;
+    margin: 25px auto;
+    max-width: 920px;
+    width: 94%;
   }
 
   .home-page{

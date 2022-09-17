@@ -11,7 +11,7 @@ export default {
 
     computed: {
         color(){
-            return this.item.name === this.$route.name ? '#E30613' : 'white'
+            return this.item.name === this.$route.name ? '#79D4C8' : '#C3C1C5'
         },
         
         path(){
@@ -27,6 +27,7 @@ export default {
         text-decoration: none;
         font-size: 26px;
         margin-left: 4px;
+        font-family: 'Kanit', sans-serif
     }
 
     .menu {
