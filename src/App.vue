@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div>
     <NavBar></NavBar>
     <router-view />
   </div>
@@ -20,12 +20,5 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 100%;
-}
-
-.content {
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  grid-template-rows: 1fr;
-  height: 100vh;
 }
 </style>

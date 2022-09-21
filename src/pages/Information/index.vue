@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="container">
-      <h1 class="text-center" style="margin-top: 25px">Mapa Cidade do Rock</h1>
+      <h1 class="text-center" style="margin-top: 25px">Cidade do Rock</h1>
       <div
         :style="{ height: `${clientHeight}px` }"
         class="img-container"
@@ -17,7 +17,7 @@
         </div>
       </div>
     </div>
-    <div class="container" style="margin-top: 50px">
+    <div class="container" style="margin: 25px auto">
       <h1 class="text-center">Atrações dos Palcos #ROCKINRIO</h1>
       <div
         class="item-container"
@@ -48,20 +48,20 @@ export default {
     imageItens() {
       return [
         {
-          x: `${this.clientWidth * 0.4}px`,
-          y: `${this.clientHeight * 0.15}px`,
+          x: `${(this.clientWidth * 0.4) - 15}px`,
+          y: `${(this.clientHeight * 0.15) - 15}px`,
         },
         {
-          x: `${this.clientWidth * 0.63}px`,
-          y: `${this.clientHeight * 0.15}px`,
+          x: `${(this.clientWidth * 0.63) - 15}px`,
+          y: `${(this.clientHeight * 0.15) - 15}px`,
         },
         {
-          x: `${this.clientWidth * 0.85}px`,
-          y: `${this.clientHeight * 0.45}px`,
+          x: `${(this.clientWidth * 0.85) - 15}px`,
+          y: `${(this.clientHeight * 0.45) - 15}px`,
         },
         {
-          x: `${this.clientWidth * 0.13}px`,
-          y: `${this.clientHeight * 0.4}px`,
+          x: `${(this.clientWidth * 0.13) - 15}px`,
+          y: `${(this.clientHeight * 0.4) - 15}px`,
         },
       ];
     },
@@ -83,7 +83,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 p,
 h1,
 h2,
@@ -103,7 +103,7 @@ span {
 }
 
 .item-container:hover {
-  background: rgb(106, 0, 0);
+  background: rgba(121, 212, 200, 0.7);
   font-weight: 900;
 }
 
@@ -122,13 +122,21 @@ span {
   width: 30px;
   background-color: rgba(0, 0, 0, 0.7);
   color: #fff;
-  height: 30px;
+  height:  30px;
   position: relative;
-  top: 30px;
+  top:  30px;
   left: 600px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+}
+
+@media only screen and (max-width: 320px) {
+  .img-item  {
+    width: 20px;
+    height: 20px;
+    top: 20px;
+  }
 }
 </style>

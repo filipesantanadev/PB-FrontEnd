@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../pages/home/index.vue";
-import Manager from "../pages/manager/index.vue";
-import About from "../pages/LocationsServices/index.vue";
+import Information from "../pages/Information/index.vue";
+import LocationsServices from "../pages/LocationsServices/index.vue";
 
 const routes = [
   {
@@ -12,12 +12,12 @@ const routes = [
   {
     path: "/info",
     name: "info",
-    component: Manager,
+    component: Information,
   },
   {
     path: "/services",
     name: "services",
-    component: About,
+    component: LocationsServices,
   },
 ];
 

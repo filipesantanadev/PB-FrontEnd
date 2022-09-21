@@ -1,6 +1,6 @@
 <template>
   <div class="home-page" ref="pageAll">
-    <div class="buttons">
+    <div :class="`${width > 720 ? 'buttons' : 'buttons-mob'}`">
       <button 
         v-for="(day, i) in days" 
         :key="day.key" 
@@ -19,7 +19,7 @@
       </n-carousel>
     </div>
 
-    <div class="data-shows" v-for="stage in days[selected].stages" :key="stage.name">
+    <div style="padding: 2%" class="data-shows" v-for="stage in days[selected].stages" :key="stage.name">
       <h1 style="color: #C3C1C5">{{ stage.name }}</h1>
       <div v-for="att in stage.att" :key="att">
         <p style="color: #C3C1C5">
@@ -41,6 +41,12 @@ export default {
       width: window.innerWidth
     };
   },
+
+  mounted() {
+    window.onresize = () => {
+      this.width = window.innerWidth
+    }
+  }
 };
 </script>
 
@@ -48,6 +54,7 @@ export default {
   .carousel-img {
     margin: 0 auto;
     width: 94%;
+    height: 450px;
     object-fit: cover;
   }
 
@@ -55,6 +62,17 @@ export default {
     display: flex;
     justify-content: center;
     gap: 12px;
+  }
+
+  .buttons-mob{
+    display: grid;
+    gap: 4px;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 8px;
+  }
+
+  .buttons-mob button:last-child{
+    grid-column: 1 / 4;
   }
 
   button{
@@ -67,7 +85,8 @@ export default {
   }
 
   .carousel{
-    margin: 25px auto;
+    margin: 15px auto;
+    margin-bottom: 0;
     max-width: 920px;
     width: 94%;
   }
@@ -77,17 +96,18 @@ export default {
   }
 
   .data-shows{
-    margin-top: 25px;
+    margin: 0 auto;
     text-align: center;
   }
   
   .data-shows h1{
     font-weight: bold;
     font-size: 75px;
-    margin-bottom: 12px;
     font-family: 'Kanit', sans-serif;
     border-bottom: 1px solid #C3C1C5;
-    padding: 10px;
+    padding-bottom: 10px;
+    max-width: 920px;
+    margin: 15px auto;
   }
 
   .data-shows p{

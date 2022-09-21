@@ -1,5 +1,5 @@
 <template>
-    <div class="menu-item">
+    <div :class="`menu-item ${active ? 'active' : ''}` ">
         <font-awesome-icon class="icon" :icon="item.icon" :style="{ color, fontSize: '22px' }" />
         <router-link :to="path" :style="{color}">{{ item.title }}</router-link>
     </div>
@@ -16,6 +16,10 @@ export default {
         
         path(){
             return this.item.name === 'home' ? '/' : `/${this.item.name}`
+        },
+
+        active(){
+            return this.item.name === this.$route.name
         }
     },
 };
@@ -26,16 +30,22 @@ export default {
         font-weight: bold;
         text-decoration: none;
         font-size: 26px;
-        margin-left: 4px;
-        font-family: 'Kanit', sans-serif
+        font-family: 'Kanit', sans-serif;
     }
 
-    .menu {
-    background-color: #000000;
+    .menu-item{
+        border-bottom: 2px solid transparent;
+    }
+    
+    .menu-item:hover{
+        border-bottom: 2px solid #79D4C8;
     }
 
     .menu .icon{
         width: 30px;
-        margin-left: 16px;
+    }
+
+    .active {
+        border-bottom: 2px solid #79D4C8;
     }
 </style>
