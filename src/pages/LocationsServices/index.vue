@@ -5,6 +5,20 @@
             <div id="map"></div> 
         </div>
 
+        <div class="where-cnt">
+            <h1>Aonde voce esta?</h1>
+
+            <div class="input-cnt">
+                <input type="text" v-model="address"/>
+                <button @click="address && getAddress()" >Procurar</button>
+            </div>
+
+            <div style="padding: 10px" v-if="userLoc !== null"> 
+                <p v-if="userLoc" style="color: #45d388">Verifique sua localização no mapa acima</p>
+                <p v-else style="color: #F35A4F">Endereço informado inválido</p>
+            </div>
+        </div>
+        
         <div class="loc-container" v-for="loc in locations" :key="loc.title">
             <div class="title-cnt">
                 <h1 :style="{backgroundColor: loc.color}">{{ loc.title }}</h1>    
@@ -18,24 +32,46 @@
 
 <script>
 import { addToMap, locations } from './locations'
+import axios from 'axios'
 
 export default {
     name: 'PBFrontEndIndex',
 
     data() {
         return {
+            map: '',
+            userLoc: null,
+            address: '',
             locations: locations
         };
     },
 
-    mounted() {
-        var map = L.map('map').setView([-22.984051758338863, -43.3630563495497], 12.5);
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '© OpenStreetMap'
-        }).addTo(map);
+    methods: {
+        async getAddress(){
+            const text = this.address.replace(' ', '+')
+            const { data } = await axios.get(`http://api.positionstack.com/v1/forward?access_key=6c843ec092ac455d59f6f31a21ecff14&query=${text}`)
 
-        addToMap(map)
+            if(data.data[0]) {
+                this.map.remove()
+                this.initializeMap([data.data[0].latitude , data.data[0].longitude])
+                L.marker([data.data[0].latitude , data.data[0].longitude]).addTo(this.map).bindPopup('Voce esta aqui');
+                this.userLoc = true
+            } else this.userLoc = false
+            this.address = '';
+        },
+
+        initializeMap(loc){
+            this.map = L.map('map').setView(loc, 12.5);
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '© OpenStreetMap'
+            }).addTo(this.map);
+            addToMap(this.map)
+        }
+    },
+
+    mounted() {
+        this.initializeMap([-22.984051758338863, -43.3630563495497])
     },
 };
 </script>
@@ -63,13 +99,55 @@ export default {
         margin: 0;
         text-align: center;
     }
+
+    .where-cnt{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        max-width: 720px;
+        padding: 20px;
+        border-bottom: 1px solid #C3C1C5;
+        margin-bottom: 20px;
+    }
     
-    .loc-container h1{
+    .loc-container h1, .where-cnt h1{
         border: none;
         font-size: 36px;
         margin-bottom: 12px;
         max-width: 280px;
         padding: 15px 30px 15px 30px;
+    }
+
+    .where-cnt h1{
+        max-width: 100%;
+    }
+
+    .where-cnt input{
+        height: 40px;
+        width: 100%;
+        border: none;
+        line-height: 40px;
+        border-radius: 5px;
+        font-size: 22px;
+    }
+    
+    .where-cnt button{
+        height: 40px;
+        border: 0.2px solid white;
+        color: white;
+        background-color: #343A40;
+        font-size: 18px;
+        line-height: 18px;
+        font-weight: bold;
+        border-radius: 5px;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    .input-cnt{
+        display: flex;
+        gap: 8px;
     }
     
     p{
