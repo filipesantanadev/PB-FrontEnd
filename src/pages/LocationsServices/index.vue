@@ -55,6 +55,9 @@ export default {
                 this.map.remove()
                 this.initializeMap([data.data[0].latitude , data.data[0].longitude])
                 L.marker([data.data[0].latitude , data.data[0].longitude]).addTo(this.map).bindPopup('Voce esta aqui');
+                L.polyline([[-22.977, -43.395], [data.data[0].latitude , data.data[0].longitude]], {
+                    color: 'red'
+                }).addTo(this.map);
                 this.userLoc = true
             } else this.userLoc = false
             this.address = '';
